@@ -14,19 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Download multilingual base q5_1 model
+      - name: Download multilingual small q5_1 model
         run: |
           set -euo pipefail
           curl -L --fail --retry 3 \
-            'https://github.com/w3xgroup/taskurio-models/releases/download/whisper-models-v1/ggml-base-q5_1.bin' \
-            -o ggml-base-q5_1.bin
-          echo '422f1ae452ade6f30a004d7e5c6a43195e4433bc370bf23fac9cc591f01a8898  ggml-base-q5_1.bin' | sha256sum -c -
-          ls -lh ggml-base-q5_1.bin
+            'https://github.com/w3xgroup/taskurio-models/releases/download/whisper-models-v1/ggml-small-q5_1.bin' \
+            -o ggml-small-q5_1.bin
+          echo 'ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb  ggml-small-q5_1.bin' | sha256sum -c -
+          ls -lh ggml-small-q5_1.bin
 
       - name: Upload model artifact
         uses: actions/upload-artifact@v4
         with:
-          name: whisper-base-q5_1
-          path: ggml-base-q5_1.bin
+          name: whisper-small-q5_1
+          path: ggml-small-q5_1.bin
           retention-days: 1
           compression-level: 0
